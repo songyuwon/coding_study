@@ -25,25 +25,16 @@ int main()
 		int YY = 0;
 		if (h[i] >= n[i]) {
 			XX = n[i];
-		} else {
+			YY = 1;
+		}
+		else {
 			if (n[i] % h[i] == 0) {
 				XX = h[i];
-			} else {
-				XX = n[i] % h[i];
-			}
-		}
-
-		if (h[i] >= n[i]) {
-			YY = 1;
-		} else {
-			if (h[i] == 1) {
 				YY = (n[i] / h[i]);
-			} else {
-				if (n[i] % h[i] == 0) {
-					YY = (n[i] / h[i]);
-				} else {
-					YY = (n[i] / h[i]) + 1;
-				}
+			}
+			else {
+				XX = n[i] % h[i];
+				YY = (h[i] == 1) ? (n[i] / h[i]) : (n[i] / h[i]) + 1;
 			}
 		}
 

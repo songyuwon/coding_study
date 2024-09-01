@@ -7,22 +7,6 @@ typedef enum class SST {
 	MIX
 } scale_state_t;
 
-int ascending(int now, int next) 
-{
-	if (now < next) {
-		return 1;
-	}
-	return 0;
-}
-
-int descending(int now, int next)
-{
-	if (now > next) {
-		return 1;
-	}
-	return 0;
-}
-
 int main()
 {
 	std::array<int, 8> scale;
@@ -34,7 +18,7 @@ int main()
 
 	if (scale[0] > scale[1]) {
 		for (int i = 1; i < scale.size() - 1; i++) {
-			if (!descending(scale[i], scale[i+1])) {
+			if (scale[i] < scale[i+1]) {
 				state = SST::MIX;
 				goto exit;
 			}
@@ -42,7 +26,7 @@ int main()
 		state = SST::DESCEN;
 	} else if (scale[0] < scale[1]) {
 		for (int i = 1; i < scale.size() - 1; i++) {
-			if (!ascending(scale[i], scale[i + 1])) {
+			if (scale[i] > scale[i + 1]) {
 				state = SST::MIX;
 				goto exit;
 			}

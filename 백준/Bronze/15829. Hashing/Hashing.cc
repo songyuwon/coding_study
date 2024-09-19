@@ -38,10 +38,15 @@ int main()
 	std::cin >> num;
 	std::string input;
 	std::cin >> input;
-	int sum = 0;
+	unsigned long long sum = 0;
 
 	for (int i = 0; i < num; i++) {
-		sum += (hash[input[i]] * std::pow(31, i));
+		//unsigned long long pow_31 = static_cast<unsigned long long>(std::pow(31, i)) % 1234567891;
+		unsigned long long pow_31 = 1;
+		for (int j = 0; j < i; j++) {
+			pow_31 = (pow_31 * 31) % 1234567891;
+		}
+		sum += static_cast<unsigned long long>(hash[input[i]] * pow_31) % 1234567891;
 	}
-	std::cout << sum << std::endl;
+	std::cout << sum % 1234567891 << std::endl;
 }

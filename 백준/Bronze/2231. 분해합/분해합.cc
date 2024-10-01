@@ -14,14 +14,19 @@ int main()
 	for (int i = 1; i <= input_int; i++) {
 		std::vector<int> digit(str.size());
 
-		if (input_int < 10) {
-			digit[0] = i;
-		} else {
-			for (int j = 0; j < str.size(); j++) {
-				int calc = i / std::pow(10, str.size() - (j + 1));
-				digit[j] = calc % 10;
-			}
+		for (int j = 0; j < str.size(); j++) {
+			int calc = i / std::pow(10, str.size() - (j + 1));
+			digit[j] = calc % 10;
 		}
+
+		//if (input_int < 10) {
+		//	digit[0] = i;
+		//} else {
+		//	for (int j = 0; j < str.size(); j++) {
+		//		int calc = i / std::pow(10, str.size() - (j + 1));
+		//		digit[j] = calc % 10;
+		//	}
+		//}
 
 		int sum = 0;
 		for (auto& a : digit) {
